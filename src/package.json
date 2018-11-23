@@ -1,0 +1,12 @@
+{
+  "name": "slack-reminder",
+  "version": "1.0.0",
+  "description": "Slack reminder using cloudwatch event + AWS Lambda function + slack api",
+  "main": "src/index.js",
+  "author": "SAM CLI",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "scripts": {}
+}

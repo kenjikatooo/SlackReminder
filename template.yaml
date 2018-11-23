@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Slack reminder using cloudwatch event + AWS Lambda function + slack api 
+
+Parameters:
+  SlackToken: 
+    Type: String
+    Description: Slack auth token for using slack api
+  ChannelId: 
+    Type: String
+    Description: TargetChannelId
+
+Resources:
+    ReminderSlackBotFunction:
+        Type: AWS::Serverless::Function 
+        Properties:
+            FunctionName: ReminderSlackBotFunction
+            Description: Lambda function for notifing something to slack channel at specific time 
+            CodeUri: src/
+            Handler: index.handler
+            Runtime: nodejs8.10
+            Environment: 
+                Variables:
+                    AUTH_TOKEN: !Sub Bearer ${SlackToken}
+                    CHANNEL_ID: !Ref ChannelId
+            Events:
+                ShecduleEvent:
+                    Type: Schedule 
+                    Properties:
+                        Schedule: "cron(0 3 * * * *)" # cron format
+
+    LogGroup:
+        Type: AWS::Logs::LogGroup
+        Properties:
+            LogGroupName: !Sub /aws/lambda/${ReminderSlackBotFunction}
+            RetentionInDays: 14
+    
+Outputs:
+    ReminderSlackBotFunctionArn:
+        Description: "Reminder Slack Reminder Function ARN"
+        Value: !GetAtt ReminderSlackBotFunction.Arn
