@@ -21,3 +21,5 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 * ${stack-name} は好きなスタック名を記述
 * ${slack-token} は予め発行した Slack API トークンを指定  
 * ${target-channelid} にはリマインドを投稿する対象のチャンネルの ID を指定
+* 元のバージョンのcron式では、 `Parameter ScheduleExpression is not valid.` と出るので、日にちか曜日のフィールドに `?` を入れることで会費する
+  * 参考は [こちら](https://www.kabegiwablog.com/entry/2018/05/23/100000)
