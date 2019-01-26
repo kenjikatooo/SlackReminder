@@ -23,7 +23,7 @@ Resources:
     Type: AWS::Logs::LogGroup
   ReminderSlackBotFunction:
     Properties:
-      CodeUri: s3://ec2-sample/8e287c8f82b1ef8b3e0c2f979c6a85dc
+      CodeUri: s3://ec2-sample/330ff13e83138a9e1a9383560b3ee537
       Description: Lambda function for notifing something to slack channel at specific
         time
       Environment:
