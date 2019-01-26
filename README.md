@@ -23,3 +23,17 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 * ${target-channelid} にはリマインドを投稿する対象のチャンネルの ID を指定
 * 元のバージョンのcron式では、 `Parameter ScheduleExpression is not valid.` と出るので、日にちか曜日のフィールドに `?` を入れることで会費する
   * 参考は [こちら](https://www.kabegiwablog.com/entry/2018/05/23/100000)
+* awsコマンド実行時にエラーになる時に考えられる原因
+  *  `aws-cli` が入っていない
+     *  →インストールする
+  *  aws cloudformation ができない
+     *  →権限がない場合 (400 errorで not authourized とか出る)
+        *  IAMで権限を付与する
+  *  `node` のバージョンが古い
+     *  `nvm` をインストールする
+  *  デプロイできない
+     *  基本的に指示されたログを見て `create_failed` 的なところをチェックしてエラーメッセージをググる
+     *  関数名が被っている
+        *  lambdaに同じ関数名がないかチェック
+     *  cron式の記入の仕方が間違っている
+        *  上記の参考記事を見る
