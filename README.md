@@ -37,3 +37,6 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
         *  lambdaに同じ関数名がないかチェック
      *  cron式の記入の仕方が間違っている
         *  上記の参考記事を見る
+  *  cron式がGUIから修正できない
+     *  バグだそう
+     *  [この記事](https://github.com/concurrencylabs/aws-pricing-tools/issues/8)を見つつ、ターミナルからawsコマンドで変更すればいける
