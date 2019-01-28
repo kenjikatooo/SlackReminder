@@ -35,9 +35,9 @@ Resources:
       Events:
         ShecduleEvent:
           Properties:
-            Schedule: cron(0 14 * ? * 2-6)
+            Schedule: cron(0 14 * ? * 2-6) # リマインドを行いたい時間に設定する
           Type: Schedule
-      FunctionName: ReminderSlackBotFunction
+      FunctionName: ReminderSlackBotFunction # 被らない関数名を使用する
       Handler: index.handler
       Runtime: nodejs8.10
     Type: AWS::Serverless::Function
