@@ -16,6 +16,8 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 > $aws cloudformation package --template-file template.yaml --s3-bucket ${target-bucket} --output-template-file packaged.yaml  
 >  
 > $aws cloudformation deploy --template-file packaged.yaml --stack-name ${stack-name} --capabilities CAPABILITY_IAM --parameter-overrides SlackToken=${slack-token} ChannelId=${target-channelid}
+> $aws events list-rules
+> $aws events put-rule --name <取得したNameを入れる>  --state ENABLED --description "関数の説明をここにする" --schedule-expression "cron(0 1 ? * MON-FRI *)"
 
 * ${target-bucket} には予め作成した S3 バケットを指定する
 * ${stack-name} は好きなスタック名を記述
@@ -40,3 +42,7 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
   *  cron式がGUIから修正できない
      *  バグだそう
      *  [この記事](https://github.com/concurrencylabs/aws-pricing-tools/issues/8)を見つつ、ターミナルからawsコマンドで変更すればいける
+  *  時間通りにリマインドが送られない
+     *  GMT時間でリマインドが送信されるようになっているので表記がずれている可能性がある
+        *  GMT 10:00am の場合、日本時間19:00(+9時間)
+        *  なので日本時間10:00にリマインドしたい場合は、 1:00 に設定する 
