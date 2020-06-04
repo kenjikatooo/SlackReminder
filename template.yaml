@@ -14,7 +14,7 @@ Resources:
     ReminderSlackBotFunction:
         Type: AWS::Serverless::Function 
         Properties:
-            FunctionName: ReminderSlackBotFunction
+            FunctionName: RemindDailyAyuTodo # 被らない関数名にする
             Description: Lambda function for notifing something to slack channel at specific time 
             CodeUri: src/
             Handler: index.handler
@@ -24,7 +24,7 @@ Resources:
                     AUTH_TOKEN: !Sub Bearer ${SlackToken}
                     CHANNEL_ID: !Ref ChannelId
             Events:
-                ShecduleEvent:
+                ScheduleEvent:
                     Type: Schedule 
                     Properties:
                         Schedule: "cron(0 3 * * * *)" # cron format

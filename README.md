@@ -1,15 +1,15 @@
-# はじめに 
+## はじめに 
 
 CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリマインドを送信するための SAM テンプレートです。
 
-# 前提条件  
+## 前提条件  
 
 * リマインドを登録する Slack のワークスペースへの特定のチャンネルへの投稿が認可された Slack API トークンが発行されていること  
 * AWS のアカウントに SAM のアーティファクトを格納するための任意の S3 バケットを作成済みであること  
 * aws-cli(>= 1.16.50) がインストールされていること  
 * node(>= 10.13.0)がインストールされていること  
 
-# 反映手順  
+## 反映手順  
 
 > $npm --prefix ./src install ./src  
 > 
@@ -19,10 +19,11 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 > $aws events list-rules
 > $aws events put-rule --name <取得したNameを入れる>  --state ENABLED --description "関数の説明をここにする" --schedule-expression "cron(0 1 ? * MON-FRI *)"
 
+## トラブルシューティング
 * ${target-bucket} には予め作成した S3 バケットを指定する
 * ${stack-name} は好きなスタック名を記述
-* ${slack-token} は予め発行した Slack API トークンを指定  
-* ${target-channelid} にはリマインドを投稿する対象のチャンネルの ID を指定
+* ${slack-token} は予め発行した Slack API トークンを指定 (""で囲うとうまくいく)
+* ${target-channelid} にはリマインドを投稿する対象のチャンネルの ID を指定 (""で囲うとうまくいく)
 * 元のバージョンのcron式では、 `Parameter ScheduleExpression is not valid.` と出るので、日にちか曜日のフィールドに `?` を入れることで会費する
   * 参考は [こちら](https://www.kabegiwablog.com/entry/2018/05/23/100000)
 * awsコマンド実行時にエラーになる時に考えられる原因
@@ -46,3 +47,13 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
      *  GMT時間でリマインドが送信されるようになっているので表記がずれている可能性がある
         *  GMT 10:00am の場合、日本時間19:00(+9時間)
         *  なので日本時間10:00にリマインドしたい場合は、 1:00 に設定する 
+  *  Cloud Formationの名前が長くなってしまう
+     *  [この記事](https://github.com/concurrencylabs/aws-pricing-tools/issues/8)を見つつ、ターミナルからawsコマンドで新たにCloud Watch Event を短い名前で作成して長いものは消す
+
+## もろもろのトークンなど
+* S3
+  * cf-templates-770otl8hab3i-us-east-1
+* Slack Token
+  * xoxp-223651385478-222825480308-532727768179-ffaab45ec51aee69ab9301691d327348
+* ChannelId
+  * slackからコピーしてくる
