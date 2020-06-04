@@ -54,6 +54,6 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 * S3
   * S3にある "cf-templates-770otl8hab3i-us-east-1" を利用する
 * Slack Token
-  * レガシートークンを持ってくる
+  * [レガシートークン](https://api.slack.com/legacy/custom-integrations/legacy-tokens)を持ってくる
 * ChannelId
   * slackからコピーしてくる
