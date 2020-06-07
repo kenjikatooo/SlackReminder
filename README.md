@@ -11,7 +11,7 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 
 ## 反映手順  
 
-> $npm --prefix ./src install ./src  
+> $npm --prefix ./src install ./src  # やると初期化されるのでやらなくてもいいかも
 > 
 > $aws cloudformation package --template-file template.yaml --s3-bucket ${target-bucket} --output-template-file packaged.yaml  
 >  
