@@ -12,9 +12,9 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 ## 反映手順  
 
 > $npm --prefix ./src install ./src  # やると初期化されるのでやらなくてもいいかも
-> 
+> # packaged.yamlのファイルの作成 (やらなくても良いかも)
 > $aws cloudformation package --template-file template.yaml --s3-bucket ${target-bucket} --output-template-file packaged.yaml  
->  
+> 
 > $aws cloudformation deploy --template-file packaged.yaml --stack-name ${stack-name} --capabilities CAPABILITY_IAM --parameter-overrides SlackToken=${slack-token} ChannelId=${target-channelid}
 > $aws events list-rules
 > $aws events put-rule --name <取得したNameを入れる>  --state ENABLED --description "関数の説明をここにする" --schedule-expression "cron(0 1 ? * MON-FRI *)"
@@ -52,7 +52,7 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 
 ## もろもろのトークンなど
 * S3
-  * S3にある "cf-templates-770otl8hab3i-us-east-1" を利用する
+  * S3にある "slack-reminder" を利用する
 * Slack Token
   * ~~[レガシートークン](https://api.slack.com/legacy/custom-integrations/legacy-tokens)を持ってくる~~
   * レガシートークンは非推奨のため、slackアプリを作成して、そのアプリのBot User OAuth Tokenを持ってくる (xoxb~~のやつ)

@@ -23,7 +23,7 @@ Resources:
     Type: AWS::Logs::LogGroup
   ReminderSlackBotFunction:
     Properties:
-      CodeUri: s3://cf-templates-770otl8hab3i-us-east-1/32c911abf04d73101188d46f35a4ab03
+      CodeUri: s3://slack-reminder/32c911abf04d73101188d46f35a4ab03
       Description: Lambda function for notifing something to slack channel at specific
         time
       Environment:
@@ -35,9 +35,9 @@ Resources:
       Events:
         ScheduleEvent:
           Properties:
-            Schedule: cron(0 0 ? * MON-FRI *) # リマインドを行いたい時間に設定する *GMTなので日本時間に合わせるには +9 する→10amにしたいなら19に設定する
+            Schedule: cron(0 0 ? * MON-FRI *) # リマインドを行いたい時間に設定する *GMTなので日本時間に合わせるには +9 する→10amにしたいなら1に設定する
           Type: Schedule
-      FunctionName: RemindDailyKenjiTodo # 被らない関数名を使用する
+      FunctionName: RemindAyuTodo
       Handler: index.handler
       Runtime: nodejs12.x
     Type: AWS::Serverless::Function
