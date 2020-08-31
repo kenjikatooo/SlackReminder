@@ -35,7 +35,10 @@ Resources:
       Events:
         ScheduleEvent:
           Properties:
-            Schedule: cron(0 0 ? * MON-FRI *) # リマインドを行いたい時間に設定する *GMTなので日本時間に合わせるには +9 する→10amにしたいなら1に設定する
+            # リマインドを行いたい時間に設定する *GMTなので日本時間に合わせるには +9 する→10amにしたいなら1に設定する
+            # 例1 : 平日の朝9時にリマインドしたい場合 cron(0 0 ? * MON-FRI *)
+            # 例2 : 毎週金曜の13時にリマインドしたい場合 cron(0 4 ? * FRI *)
+            Schedule: cron(0 4 ? * FRI *)
           Type: Schedule
       FunctionName: RemindAyuTodo
       Handler: index.handler

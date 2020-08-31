@@ -49,6 +49,7 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
         *  なので日本時間10:00にリマインドしたい場合は、 1:00 に設定する 
   *  Cloud Formationの名前が長くなってしまう
      *  [この記事](https://github.com/concurrencylabs/aws-pricing-tools/issues/8)を見つつ、ターミナルからawsコマンドで新たにCloud Watch Event を短い名前で作成して長いものは消す
+*  cron式の書き方は[こちら](https://qiita.com/da-sugi/items/ef3bb45a8a99a4acacb1)
 
 ## もろもろのトークンなど
 * S3
