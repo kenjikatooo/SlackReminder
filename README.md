@@ -12,10 +12,12 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 ## 反映手順  
 
 > $npm --prefix ./src install ./src  # やると初期化されるのでやらなくてもいいかも
-> # packaged.yamlのファイルの作成 (やらなくても良いかも)
-> $aws cloudformation package --template-file template.yaml --s3-bucket ${target-bucket} --output-template-file packaged.yaml  
+> # packaged.yamlのファイルの作成 (S3上にも作成されるぽい？が、やらなくても良いかも)
+> # --profile kenjikatooo は任意のAWSアカウントに変更して使う
+> $aws cloudformation package --template-file template.yaml --s3-bucket ${target-bucket} --output-template-file packaged.yaml --profile kenjikatooo
 > 
-> $aws cloudformation deploy --template-file packaged.yaml --stack-name ${stack-name} --capabilities CAPABILITY_IAM --parameter-overrides SlackToken=${slack-token} ChannelId=${target-channelid}
+> $aws cloudformation deploy --template-file packaged.yaml --stack-name ${stack-name} --capabilities CAPABILITY_IAM --parameter-overrides SlackToken=${slack-token} ChannelId=${target-channelid} --profile kenjikatooo
+> # これ以降はやらなくても大丈夫
 > $aws events list-rules
 > $aws events put-rule --name <取得したNameを入れる>  --state ENABLED --description "関数の説明をここにする" --schedule-expression "cron(0 1 ? * MON-FRI *)"
 

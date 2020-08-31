@@ -40,7 +40,7 @@ Resources:
             # 例2 : 毎週金曜の13時にリマインドしたい場合 cron(0 4 ? * FRI *)
             Schedule: cron(0 4 ? * FRI *)
           Type: Schedule
-      FunctionName: RemindAyuTodo
+      FunctionName: RemindProductMtg
       Handler: index.handler
       Runtime: nodejs12.x
     Type: AWS::Serverless::Function

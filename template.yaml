@@ -14,7 +14,7 @@ Resources:
     ReminderSlackBotFunction:
         Type: AWS::Serverless::Function 
         Properties:
-            FunctionName: RemindAyuTodo # 被らない関数名にする
+            FunctionName: RemindProductMtg # 被らない関数名にする
             Description: Lambda function for notifing something to slack channel at specific time 
             CodeUri: src/
             Handler: index.handler
