@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
         const n = Math.floor( Math.random() * (icons.length - 1) );
         const params = {
             "channel": process.env.CHANNEL_ID,
-            "text": "<!channel> 本日はプロダクトミーティングです :tada: \n 1週間お疲れ様でした :wa-i: \n mtgでやりたいことや言いたいことがある人はこのスレッドに *所要時間* と *概要* を書いてね〜 :woman-gesturing-ok: \n \n *アジェンダ* \n ```1. 戦略のアプデのシェア (10min) \n2. 違和感出しフライデー (10min) \n3. 持ち込みアジェンダ \n4. 今週のBUMP (15min)```",
+            "text": "<!channel> おはよう！ 今日取り組むプロジェクトはこちらから確認してね！今日もがんばろう〜！ \n \n今のあなたのイシュー：\n ```https://www.notion.so/almainc/48036bbc8aab4245a957450cb5e5a75e?v=10b69f01a4d447bc8e2758466577c5d2``` \n \n データはこちら:point_down:： \n ```https://redash.cocoda-design.com/dashboards?page=1&order=-created_at```",
             "icon_emoji": icons[n].icon_emoji, // Set any icon_emoji as you like
             "username": icons[n].username // Set any names as you like
         }

@@ -12,7 +12,7 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 ## 反映手順  
 
 > $npm --prefix ./src install ./src  # やると初期化されるのでやらなくてもいいかも
-> # packaged.yamlのファイルの作成 (S3上にも作成されるぽい？が、やらなくても良いかも)
+> # packaged.yamlのファイルの作成 (packaged.yamlを編集すれば、このコマンドは実行しなくて良い)
 > # --profile kenjikatooo は任意のAWSアカウントに変更して使う
 > $aws cloudformation package --template-file template.yaml --s3-bucket ${target-bucket} --output-template-file packaged.yaml --profile kenjikatooo
 > 
