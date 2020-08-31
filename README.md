@@ -57,5 +57,6 @@ CloudWatch Event + AWS Lambda Function + Slack Api を使って、Slack にリ�
 * Slack Token
   * ~~[レガシートークン](https://api.slack.com/legacy/custom-integrations/legacy-tokens)を持ってくる~~
   * レガシートークンは非推奨のため、slackアプリを作成して、そのアプリのBot User OAuth Tokenを持ってくる (xoxb~~のやつ)
+    * 「あなたの味方」アプリのOAuth Tokenをとってくる
 * ChannelId
   * slackからコピーしてくる
